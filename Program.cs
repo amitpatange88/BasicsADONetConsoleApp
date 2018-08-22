@@ -15,17 +15,19 @@ namespace BasicsADONetConsoleApp
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand("select * from EMPLOYEE", conn);
+                SqlCommand cmd = new SqlCommand("select * from EMPLOYEE;select * from CUSTOMER;", conn);
                 conn.Open();
-                SqlDataReader rows = cmd.ExecuteReader();
-
-                while(rows.Read())
+                using (SqlDataReader rdr = cmd.ExecuteReader())
                 {
-                    //reading rows goes here.
-                    string firstName = rows["First_Name"].ToString();
-                    //place all columns here.
+                    //BindtoFirstGriddatasource = rdr;
 
+                    while(rdr.NextResult())
+                    {
+                        //BindtoSecondGriddatasource = rdr;
+                    }
                 }
+
+                    
             }
         }
     }
