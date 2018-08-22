@@ -13,12 +13,11 @@ namespace BasicsADONetConsoleApp
     {
         static void Main(string[] args)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand("select COUNT(*) as TotalRows from EMPLOYEE", conn);
+                SqlCommand cmd = new SqlCommand("select * from EMPLOYEE", conn);
                 conn.Open();
-                int rows = (int)cmd.ExecuteScalar();
+                SqlDataReader rows = cmd.ExecuteReader();
             }
         }
     }
