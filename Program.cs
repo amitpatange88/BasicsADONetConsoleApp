@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data.Sql;
 using System.Configuration;
+using System.Data;
 
 namespace BasicsADONetConsoleApp
 {
@@ -26,8 +27,17 @@ namespace BasicsADONetConsoleApp
                         //BindtoSecondGriddatasource = rdr;
                     }
                 }
-
                     
+            }
+
+
+            using (SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("select * from EMPLOYEE; select* from CUSTOMER;", conn1);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+
+                //bind to data source here somewhere
             }
         }
     }
