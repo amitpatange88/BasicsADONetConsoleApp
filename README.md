@@ -1,0 +1,1 @@
+This is basic ADO.net application for executing sql queries and usage of App.Config.
