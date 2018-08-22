@@ -36,7 +36,6 @@ namespace BasicsADONetConsoleApp
                 SqlDataAdapter da = new SqlDataAdapter("select * from EMPLOYEE; select* from CUSTOMER;", conn1);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
-
                 //bind to data source here somewhere
             }
         }
