@@ -18,6 +18,14 @@ namespace BasicsADONetConsoleApp
                 SqlCommand cmd = new SqlCommand("select * from EMPLOYEE", conn);
                 conn.Open();
                 SqlDataReader rows = cmd.ExecuteReader();
+
+                while(rows.Read())
+                {
+                    //reading rows goes here.
+                    string firstName = rows["First_Name"].ToString();
+                    //place all columns here.
+
+                }
             }
         }
     }
