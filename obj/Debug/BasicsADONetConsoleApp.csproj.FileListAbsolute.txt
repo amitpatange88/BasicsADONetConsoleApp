@@ -1,0 +1,6 @@
+C:\VS-Programs\BasicsADONetConsoleApp\BasicsADONetConsoleApp\bin\Debug\BasicsADONetConsoleApp.exe.config
+C:\VS-Programs\BasicsADONetConsoleApp\BasicsADONetConsoleApp\bin\Debug\BasicsADONetConsoleApp.exe
+C:\VS-Programs\BasicsADONetConsoleApp\BasicsADONetConsoleApp\bin\Debug\BasicsADONetConsoleApp.pdb
+C:\VS-Programs\BasicsADONetConsoleApp\BasicsADONetConsoleApp\obj\Debug\BasicsADONetConsoleApp.csprojResolveAssemblyReference.cache
+C:\VS-Programs\BasicsADONetConsoleApp\BasicsADONetConsoleApp\obj\Debug\BasicsADONetConsoleApp.exe
+C:\VS-Programs\BasicsADONetConsoleApp\BasicsADONetConsoleApp\obj\Debug\BasicsADONetConsoleApp.pdb
