@@ -16,27 +16,26 @@ namespace BasicsADONetConsoleApp
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand("select * from EMPLOYEE;select * from CUSTOMER;", conn);
                 conn.Open();
-                using (SqlDataReader rdr = cmd.ExecuteReader())
+                // ACID Property : Atomicity, Consistency, Integrity, Durability
+                SqlTransaction tran = conn.BeginTransaction();
+                try
                 {
-                    //BindtoFirstGriddatasource = rdr;
+                    SqlCommand cmd = new SqlCommand("UPDATE [EmployeeManagement].[dbo].[ACCOUNT] set AVAIL_BALANCE = AVAIL_BALANCE - 10 WHERE ACCOUNT_ID = 2", conn, tran);
+                    cmd.ExecuteNonQuery();
 
-                    while(rdr.NextResult())
-                    {
-                        //BindtoSecondGriddatasource = rdr;
-                    }
+                    cmd = new SqlCommand("UPDATE [EmployeeManagement].[dbo].[ACCOUNT] set AVAIL_BALANCE = AVAIL_BALANCE + 10 WHERE ACCOUNT_ID = 5", conn, tran);
+                    cmd.ExecuteNonQuery();
+                    tran.Commit();
+                    Console.WriteLine("Transcation Successful.");
+                    Console.ReadLine();
                 }
-                    
-            }
-
-
-            using (SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString))
-            {
-                SqlDataAdapter da = new SqlDataAdapter("select * from EMPLOYEE; select* from CUSTOMER;", conn1);
-                DataSet ds = new DataSet();
-                da.Fill(ds);
-                //bind to data source here somewhere
+                catch(Exception e)
+                {
+                    tran.Rollback();
+                    Console.WriteLine("Transcation Failed."+e.Message);
+                    Console.ReadLine();
+                }   
             }
         }
     }
